@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dog Breed Image Gallery</title>
+
+        <!-- Select2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+            integrity="sha384-OXVF05DQEe311p6ohU11NwlnX08FzMCsyoXzGOaL+83dKAb3qS17yZJxESl8YrJQ"
+            crossorigin="anonymous"
+        />
+        <link href="./resources/styles/index.css" rel="stylesheet""/>
+    </head>
+    <body>
+        <h1>Dog Breed Image Gallery</h1>
+
+        <label>Select Dog Breed(s):</label>
+        <select id="breedSelect" multiple style="width: 50%">
+            <!-- Options will be populated via JavaScript -->
+        </select>
+
+        <button class="load-images-button" onclick="loadImages()">
+            Load Images
+        </button>
+        <button class="load-images-button" onclick="loadRandomBreedImages()">
+            Random Breed
+        </button>
+
+        <div class="image-gallery" id="imageGallery">
+            <!-- Images will be populated here via JavaScript -->
+        </div>
+
+        <!-- jQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+            crossorigin="anonymous"
+        ></script>
+        <!-- Select2 JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"
+            integrity="sha384-d3UHjPdzJkZuk5H3qKYMLRyWLAQBJbby2yr2Q58hXXtAGF8RSNO9jpLDlKKPv5v3"
+            crossorigin="anonymous"
+        ></script>
+
+        <script src="./resources/scripts/index.js"></script>
+    </body>
+</html>

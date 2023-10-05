@@ -1,0 +1,107 @@
+/* Base styles for the body, setting font, background color, and padding */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Styling the main header: centered text with a specific color and bottom margin */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Spacing below the subheaders (used for breed names above images) */
+h3 {
+    margin-bottom: 10px;
+}
+
+/* Styling for labels: making them block elements with bottom margin and bold text */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Ensuring the Select2 dropdown takes the full width of its parent */
+.select2-container {
+    width: 100% !important;
+}
+
+/* Rounding the borders and adding a light shadow to the Select2 dropdown */
+.select2-selection {
+    border-radius: 5px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Styling the main image gallery container with flex properties for alignment */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Flex container for each breed section to center breed name above images */
+.breed-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Container to horizontally align breed images */
+.breed-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Styling individual dog images with specific width, border, shadow, and hover effect */
+.image-gallery img {
+    max-width: 200px;
+    margin: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for dog images, giving them a slight scale and deeper shadow */
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling the main buttons (load and random) with color, padding, and transitions */
+.load-images-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin: 20px 0;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the main buttons, changing the background color */
+.load-images-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling the clear 'x' icon in Select2 dropdown to remove all selections */
+.select2-selection__clear {
+    color: red;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Hover effect for the clear 'x' icon in Select2 */
+.select2-selection__clear:hover {
+    color: darkred;
+}
