@@ -105,3 +105,43 @@ label {
 .select2-selection__clear:hover {
     color: darkred;
 }
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+    
+    /* For smaller screens, we reduce the side padding */
+    body {
+        padding: 10px;
+    }
+
+    /* Adjusting image gallery for smaller screens */
+    .image-gallery img {
+        max-width: 150px;
+        margin: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Change the flex direction for breed containers as well */
+    .breed-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjusting the button size for better touch experience */
+    .load-images-button {
+        padding: 8px 16px;
+    }
+
+    h3 {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .breed-section {
+        width: 15%;
+    }
+}
+
