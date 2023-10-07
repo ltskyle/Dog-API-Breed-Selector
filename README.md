@@ -4,10 +4,10 @@ This web application allows users to explore a gallery of images featuring their
 
 ## 🌟 Features
 
-- **Dog Breed Dropdown**: Users can select one or multiple dog breeds from a dropdown list.
-- **Image Gallery**: Display 5 images for each selected breed.
-- **Random Breed**: A button that fetches images of a random dog breed.
-- **Responsive Design**: The image gallery adjusts gracefully to different screen sizes.
+- 🐶 **Dog Breed Dropdown**: Users can select one or multiple dog breeds from a dropdown list.
+- 📷 **Image Gallery**: Display 5 images for each selected breed.
+- 🎲 **Random Breed**: A button that fetches images of a random dog breed.
+- 📱 **Responsive Design**: The image gallery adjusts gracefully to different screen sizes.
 
 ## 🚀 Getting Started
 
