@@ -18,11 +18,25 @@ async function fetchBreeds() {
     const data = await response.json()
     const breeds = data.message
     const select = document.getElementById('breedSelect')
+
     for (const breed in breeds) {
-        const option = document.createElement('option')
-        option.value = breed
-        option.textContent = capitalizeFirstLetter(breed)
-        select.appendChild(option)
+        // Check if breed has sub-breeds
+        if (breeds[breed].length > 0) {
+            for (const subBreed of breeds[breed]) {
+                const option = document.createElement('option')
+                option.value = `${breed}-${subBreed}` // e.g., "bulldog-boston"
+                option.textContent = capitalizeFirstLetter(
+                    `${breed} ${subBreed}`
+                )
+                select.appendChild(option)
+            }
+        } else {
+            // If no sub-breeds, simply add the breed
+            const option = document.createElement('option')
+            option.value = breed
+            option.textContent = capitalizeFirstLetter(breed)
+            select.appendChild(option)
+        }
     }
 }
 
@@ -52,10 +66,21 @@ async function loadImages() {
     )
     const gallery = document.getElementById('imageGallery')
     gallery.innerHTML = ''
+
     for (const breed of selectedBreeds) {
-        const response = await fetch(
-            `https://dog.ceo/api/breed/${breed}/images/random/5`
-        )
+        const [mainBreed, subBreed] = breed.split('-')
+        let response
+
+        if (subBreed) {
+            response = await fetch(
+                `https://dog.ceo/api/breed/${mainBreed}/${subBreed}/images/random/5`
+            )
+        } else {
+            response = await fetch(
+                `https://dog.ceo/api/breed/${mainBreed}/images/random/5`
+            )
+        }
+
         const data = await response.json()
         gallery.appendChild(createBreedSection(breed, data.message))
     }
@@ -69,9 +94,20 @@ async function loadRandomBreedImages() {
         breedOptions[Math.floor(Math.random() * breedOptions.length)]
     const gallery = document.getElementById('imageGallery')
     gallery.innerHTML = ''
-    const response = await fetch(
-        `https://dog.ceo/api/breed/${randomBreed}/images/random/5`
-    )
+
+    const [mainBreed, subBreed] = randomBreed.split('-')
+    let response
+
+    if (subBreed) {
+        response = await fetch(
+            `https://dog.ceo/api/breed/${mainBreed}/${subBreed}/images/random/5`
+        )
+    } else {
+        response = await fetch(
+            `https://dog.ceo/api/breed/${mainBreed}/images/random/5`
+        )
+    }
+
     const data = await response.json()
     gallery.appendChild(createBreedSection(randomBreed, data.message))
 }
