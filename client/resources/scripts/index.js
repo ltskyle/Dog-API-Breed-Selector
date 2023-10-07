@@ -2,7 +2,7 @@ const apiUrl = 'https://dog.ceo/api/breeds/list/all'
 
 document.addEventListener('DOMContentLoaded', function () {
     $('#breedSelect').select2({
-        placeholder: 'Select dog breed(s)',
+        placeholder: 'Enter breed(s)',
         allowClear: true,
     })
     fetchBreeds()
