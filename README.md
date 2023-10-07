@@ -1,7 +1,5 @@
 # 🐾 Dog Image Gallery 🐕
 
-![Dog Image Gallery](demo.png)
-
 This web application allows users to explore a gallery of images featuring their favorite dog breeds. Users can select one or multiple dog breeds from a dropdown list and view a gallery of images associated with their chosen breeds. Additionally, there is a "Random Breed" feature that fetches images of a randomly selected dog breed.
 
 ## 🌟 Features
@@ -68,4 +66,3 @@ Here are some potential future enhancements for the Dog Image Gallery applicatio
 - [Select2](https://select2.org/) for enhancing the functionality of the breed dropdown.
 
 Enjoy exploring the Dog Image Gallery application!
-
