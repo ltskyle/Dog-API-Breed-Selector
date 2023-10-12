@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchBreeds()
 })
 
-// Helper function to capitalize the first letter of a string
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
@@ -20,18 +19,16 @@ async function fetchBreeds() {
     const select = document.getElementById('breedSelect')
 
     for (const breed in breeds) {
-        // Check if breed has sub-breeds
         if (breeds[breed].length > 0) {
             for (const subBreed of breeds[breed]) {
                 const option = document.createElement('option')
-                option.value = `${breed}-${subBreed}` // e.g., "bulldog-boston"
+                option.value = `${breed}-${subBreed}`
                 option.textContent = capitalizeFirstLetter(
                     `${breed} ${subBreed}`
                 )
                 select.appendChild(option)
             }
         } else {
-            // If no sub-breeds, simply add the breed
             const option = document.createElement('option')
             option.value = breed
             option.textContent = capitalizeFirstLetter(breed)
@@ -60,14 +57,26 @@ function createBreedSection(breed, imageUrls) {
     return breedSection
 }
 
-async function loadImages() {
-    const selectedBreeds = Array.from($('#breedSelect').select2('data')).map(
-        (data) => data.id
-    )
+async function loadBreedImages(isRandom = false) {
     const gallery = document.getElementById('imageGallery')
     gallery.innerHTML = ''
 
-    for (const breed of selectedBreeds) {
+    let breedsToLoad = []
+
+    if (isRandom) {
+        const breedOptions = Array.from(
+            document.getElementById('breedSelect').options
+        ).map((opt) => opt.value)
+        breedsToLoad.push(
+            breedOptions[Math.floor(Math.random() * breedOptions.length)]
+        )
+    } else {
+        breedsToLoad = Array.from($('#breedSelect').select2('data')).map(
+            (data) => data.id
+        )
+    }
+
+    for (const breed of breedsToLoad) {
         const [mainBreed, subBreed] = breed.split('-')
         let response
 
@@ -84,30 +93,4 @@ async function loadImages() {
         const data = await response.json()
         gallery.appendChild(createBreedSection(breed, data.message))
     }
-}
-
-async function loadRandomBreedImages() {
-    const breedOptions = Array.from(
-        document.getElementById('breedSelect').options
-    ).map((opt) => opt.value)
-    const randomBreed =
-        breedOptions[Math.floor(Math.random() * breedOptions.length)]
-    const gallery = document.getElementById('imageGallery')
-    gallery.innerHTML = ''
-
-    const [mainBreed, subBreed] = randomBreed.split('-')
-    let response
-
-    if (subBreed) {
-        response = await fetch(
-            `https://dog.ceo/api/breed/${mainBreed}/${subBreed}/images/random/5`
-        )
-    } else {
-        response = await fetch(
-            `https://dog.ceo/api/breed/${mainBreed}/images/random/5`
-        )
-    }
-
-    const data = await response.json()
-    gallery.appendChild(createBreedSection(randomBreed, data.message))
 }
